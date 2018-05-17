@@ -1,17 +1,25 @@
 <template>
   <div class="hello">
     {{msg}}
-    <van-button type="default">默认按钮</van-button>
+    <van-button type="default">{{userInfo}}</van-button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'HelloWorld',
   data() {
     return {
       msg: 'Welcome to Your Vue.js 33322'
     }
+  },
+  created() {
+    let that = this
+    that.$store.dispatch('userInfo', 'xiangha')
+  },
+  computed: {
+    ...mapGetters(['userInfo'])
   }
 }
 </script>

@@ -3,9 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from '@/store'
 import axios from 'axios'
 import '@/assets/css/reset.styl'
-import { Button } from 'vant'
+import {
+  Button
+} from 'vant'
 
 Vue.prototype.$http = axios
 // 跨域请求时自动携带cookie
@@ -18,8 +21,6 @@ Vue.use(Button)
 new Vue({
   el: '#ibuleng',
   router,
-  components: {
-    App
-  },
-  template: '<App/>'
+  store,
+  render: h => h(App)
 })
