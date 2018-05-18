@@ -9,20 +9,31 @@
 > * axios ^0.18.0
 > * stylus ^0.54.5
 > * vant ^1.1.3
+> * cross-env ^5.1.5
 
 
 ## 项目结构[src]
 
 ``` bash
 
-├── components               # 全部组件
-│   └── index.vue            # 主入口
-├── router                   # 路由配置
+├── api                      # 接口相关
 ├── assets                   # 相关资源
 │   ├── images               # 图片
 │   └── css                  # styl样式
 │   └── js                   # js文件
-└──
+├── components               # 全部公共组件
+│   └── xhHead.vue           # 头部组件
+├── config                   # api及相关地址配置
+├── page                     # 全部页面
+├── router                   # 路由配置
+├── store                    # vuex全局状态管理
+    ├── index.js             # 组装模块并导出 store
+    ├── actions.js           # 根级别的 action
+    ├── getters.js           # 根级别的 getters
+    ├── mutations.js         # 根级别的 mutation
+    ├── state.js             # 根级别的 state
+    └── mutation-types.js    # 常量替代 mutation 事件类型
+└── utils                    # 工具类
 
 ```
 ## 关键命令
@@ -35,5 +46,8 @@ npm install
 npm run dev
 
 # 打包用于生产环境
-npm run build
+npm run build-ceshi
+
+# 打包用于生产环境
+npm run build-prod
 ```

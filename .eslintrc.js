@@ -31,6 +31,8 @@ module.exports = {
     'space-before-function-paren': 0,
     "vue/no-parsing-error": [2, {
       "x-invalid-end-tag": false
-    }]
+    }],
+    "eqeqeq": 0,
+
   }
 }
