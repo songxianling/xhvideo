@@ -4,6 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const PostCompilePlugin = require('webpack-post-compile-plugin')
+const PrerenderSpaPlugin = require('prerender-spa-plugin')
 var webpack = require('webpack')
 
 function resolve(dir) {
@@ -82,7 +83,16 @@ module.exports = {
     new webpack.DefinePlugin({
       '__buildEnv__': JSON.stringify(process.env.BUILD_ENV || 'dev')
     }),
-    new PostCompilePlugin()
+    new PostCompilePlugin(),
+    new PrerenderSpaPlugin(
+      // npm run build的输出目录
+      path.resolve(__dirname, '../dist'),
+      // 需要进行预渲染的页面
+      ['/', '/author'], {
+          captureAfterTime: 5000,
+          maxAttempts: 10
+      }
+    )
   ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

@@ -1,5 +1,6 @@
 const state = {
-  userInfo: 'sxl'
+  userInfo: 'sxl',
+  videoPlay: false
 }
 
 export default state

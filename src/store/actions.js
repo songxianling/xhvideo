@@ -5,3 +5,9 @@ export const userInfo = ({
 }, param) => {
   commit(types.USERINFO, param)
 }
+
+export const videoPlay = ({
+  commit
+}, param) => {
+  commit(types.VIDEOPLAY, param)
+}

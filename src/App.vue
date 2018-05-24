@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
  #ibuleng-wrap
   width 100%
   height 100%
