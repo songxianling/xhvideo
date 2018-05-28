@@ -10,5 +10,5 @@ const {
 } = require(`./config.${__buildEnv__}`)
 
 export const basicConfig = {
-  BASE_DATA_HOST: `${PROTOCOL}//www.${HOST}${PORT}`
+  BASE_DATA_HOST: `${PROTOCOL}//${HOST}${PORT}`
 }

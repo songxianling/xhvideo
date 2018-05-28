@@ -362,10 +362,10 @@ export default {
         id: '3030834',
         container: 'ad_u123456'
     })
-    // let data = { num: 1 }
-    // that.$api.apiComPost('/DishMenus/Main2/Dish/getDishList', data, res => {
-    //   console.log(123)
-    // })
+    let data = { num: 1 }
+    that.$api.apiComPost('/users/getUser', JSON.stringify(data), res => {
+      console.log(res)
+    })
   },
   methods: {
     onPlayerTouch(event) {

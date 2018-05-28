@@ -6,6 +6,7 @@ const vueLoaderConfig = require('./vue-loader.conf')
 const PostCompilePlugin = require('webpack-post-compile-plugin')
 const PrerenderSpaPlugin = require('prerender-spa-plugin')
 var webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -15,7 +16,7 @@ const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
+  include: [resolve('client'), resolve('test')],
   options: {
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
@@ -25,7 +26,7 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './client/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -37,7 +38,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('client')
     }
   },
   module: {
@@ -51,7 +52,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('client'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -83,16 +84,16 @@ module.exports = {
     new webpack.DefinePlugin({
       '__buildEnv__': JSON.stringify(process.env.BUILD_ENV || 'dev')
     }),
-    new PostCompilePlugin(),
-    new PrerenderSpaPlugin(
-      // npm run build的输出目录
-      path.resolve(__dirname, '../dist'),
-      // 需要进行预渲染的页面
-      ['/', '/author'], {
-          captureAfterTime: 5000,
-          maxAttempts: 10
-      }
-    )
+    new PostCompilePlugin()
+    // new PrerenderSpaPlugin(
+    //   // npm run build的输出目录
+    //   path.resolve(__dirname, '../dist'),
+    //   // 需要进行预渲染的页面
+    //   ['/', '/author'], {
+    //       captureAfterTime: 5000,
+    //       maxAttempts: 10
+    //   }
+    // )
   ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

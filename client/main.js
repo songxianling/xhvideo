@@ -1,3 +1,4 @@
+/* eslint-disable */
 import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
@@ -11,7 +12,7 @@ import VideoPlayer from 'vue-video-player'
 // import VueLazyLoad from 'vue-lazyload'
 import 'video.js/dist/video-js.css'
 import '@/assets/css/reset.styl'
-/* eslint-disable */
+
 import callApp from '@/assets/js/h5CallApp'
 import {
   Button, Lazyload
@@ -28,6 +29,9 @@ Vue.use(MetaInfo)
 Vue.prototype.$api = api
 // 跨域请求时自动携带cookie
 axios.defaults.withCredentials = true
+axios.get('http://localhost:7777/users/getUser?id=1&page=2').then((res)=>{
+  console.log(res);
+})
 // 阻止vue的启动时生成生产提示警告
 Vue.config.productionTip = false
 // if ('addEventListener' in document) {
@@ -42,3 +46,17 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#ibuleng')
+
+// export function createApp () {
+//   // 创建 router 实例
+//   const router = new createRouter()
+//   const store = createStore()
+//   sync(router,store)
+//   const app = new Vue({
+//     // 注入 router 到根 Vue 实例
+//     router,
+//     render: h => h(App)
+//   })
+//   // 返回 app 和 router
+//   return { app, router }
+// }
