@@ -160,6 +160,8 @@
 <template>
 
   <div class="home">
+    <iframe src="http://cbjs.baidu.com/js/m.js" frameborder="0">
+    </iframe>
     <!-- <xh-head goBack="true"></xh-head>   @click="onPlayerTouch($event)"-->
     <div class="video-outer-box">
       <video-player class="video-player vjs-custom-skin"
